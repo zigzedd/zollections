@@ -37,7 +37,7 @@ test "simple collection" {
 	slice[2] = try allocator.create(u8);
 
 	// Create a collection with your slice of elements.
-	const collection = try zollections.Collection(u8).init(allocator, slice);
+	var collection = zollections.Collection(u8).init(allocator, slice);
 	// Free your collection: your slice and all your elements will be freed.
 	defer collection.deinit();
 }
@@ -60,7 +60,7 @@ test "recursive free" {
 	slice[0] = slicePointer;
 
 	// Create a collection with your slice of elements.
-	const collection = try zollections.Collection([]*u8).init(allocator, slice);
+	var collection = zollections.Collection([]*u8).init(allocator, slice);
 	// Free your collection: your slice and all your slices and their elements will be freed.
 	defer collection.deinit();
 }
@@ -79,7 +79,7 @@ test "custom struct deinit" {
 	slice[2].* = try ExampleStruct.init(16);
 
 	// Create a collection with your slice of elements.
-	const collection = try zollections.Collection(ExampleStruct).init(allocator, slice);
+	var collection = zollections.Collection(ExampleStruct).init(allocator, slice);
 	// Free your collection: your slice and all your elements will be deinitialized and freed.
 	defer collection.deinit();
 }

@@ -15,17 +15,13 @@ pub fn Collection(comptime T: anytype) type
 		/// Initialize a new collection of values.
 		/// Values are now owned by the collection and will free them when it is deinitialized.
 		/// The allocator must be the one that manages the slice and its items.
-		pub fn init(allocator: std.mem.Allocator, values: []*T) !*Self
+		pub fn init(allocator: std.mem.Allocator, values: []*T) Self
 		{
-			const self = try allocator.create(Self);
-
-			self.* = .{
+			return .{
 				.allocator = allocator,
 				// Store given values in items slice.
 				.items = values,
 			};
-
-			return self;
 		}
 
 		/// Free any pointer value.
@@ -108,9 +104,6 @@ pub fn Collection(comptime T: anytype) type
 
 			// Free items slice.
 			self.allocator.free(self.items);
-
-			// Destroy the current collection.
-			self.allocator.destroy(self);
 		}
 	};
 }
