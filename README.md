@@ -28,7 +28,7 @@ _Zollections_ is a collections library for Zig. It's made to ease memory managem
 
 ## Versions
 
-Zollections 0.1.0 is made and tested with zig 0.13.0.
+Zollections 0.1.1 is made and tested with zig 0.13.0.
 
 ## How to use
 
@@ -37,7 +37,7 @@ Zollections 0.1.0 is made and tested with zig 0.13.0.
 In your project directory:
 
 ```shell
-$ zig fetch --save https://code.zeptotech.net/zedd/zollections/archive/v0.1.0.tar.gz
+$ zig fetch --save https://code.zeptotech.net/zedd/zollections/archive/v0.1.1.tar.gz
 ```
 
 In `build.zig`:
